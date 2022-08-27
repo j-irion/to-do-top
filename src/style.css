@@ -1,3 +1,20 @@
+* {
+  margin: 0;
+}
+
+body {
+  display: grid;
+  grid-template-rows: 50px 1fr;
+  grid-template-columns: 300px 1fr;
+  min-height: 100vh;  
+}
+
+header {
+  background-color: #A51822;
+  grid-column: 1 / -1;
+}
+
 .sidebar {
-  background-color: RED;
+  grid-column: 1 / 2;
+  background-color: rgb(240, 240, 240);
 }
