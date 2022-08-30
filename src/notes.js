@@ -1,22 +1,14 @@
-export function displayNoteCreator() {
+function displayNoteCreator() {
   let modal = document.getElementById("notesModal");
-  console.log(modal);
   modal.style.display = "block";
 }
 
-export function closeNoteCreator() {
+function closeNoteCreator() {
   let modal = document.getElementById("notesModal");
   modal.style.display = "none";
 }
 
-const Note = function (
-  title,
-  priority,
-  dueDate,
-  description,
-  project,
-  completed
-) {
+const Note = function (title, priority, dueDate, description, completed) {
   let noteTitle = title;
   let notePrio = priority;
   let noteDueDate = dueDate;
@@ -56,3 +48,5 @@ const Note = function (
     },
   };
 };
+
+export { displayNoteCreator, closeNoteCreator, Note };
