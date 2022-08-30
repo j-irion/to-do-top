@@ -7,6 +7,7 @@ module.exports = {
     index: "./src/index.js",
     notes: "./src/notes.js",
     projects: "./src/projects.js",
+    app: "./src/app.js",
   },
   devtool: "inline-source-map",
   plugins: [
