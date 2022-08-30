@@ -20,8 +20,13 @@ header {
 .sidebar {
   grid-column: 1 / 2;
   background-color: rgb(240, 240, 240);
+  padding: 40px;
 }
 
+.projects {
+  padding-left: 20px;
+  color: rgb(124, 124, 124);
+}
 
 .modal {
   display: none; 
