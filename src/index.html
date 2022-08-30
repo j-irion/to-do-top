@@ -5,12 +5,61 @@
     <title>To-Do</title>
   </head>
   <body>
-    <header></header>
+    <header><button id="btn-add-note">Add Note</button></header>
     <div class="sidebar">
       <div id="inbox">Inbox</div>
       <div id="today">Today</div>
       <div class="projects">Projects</div>
     </div>
     <div class="content"></div>
+
+    <div id="notesModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>New Task</h2>
+          <span class="close">&times;</span>
+        </div>
+        <hr />
+        <form action="#">
+          <div class="form-column">
+            <div class="form-element">
+              <h3>Title:</h3>
+              <input type="text" name="input-title" id="input-title" />
+            </div>
+            <div class="form-element">
+              <h3>Description:</h3>
+              <textarea
+                name="input-description"
+                id="input-description"
+                rows="8"
+              ></textarea>
+            </div>
+          </div>
+          <div class="form-column">
+            <div class="form-element">
+              <h3>Due Date:</h3>
+              <input type="datetime" name="input-date" id="input-date" />
+            </div>
+            <div class="form-element">
+              <h3>Priority</h3>
+              <select name="input-priority" id="input-priority">
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+              </select>
+            </div>
+            <div class="form-element">
+              <h3>Project:</h3>
+              <select name="input-project" id="input-project">
+                <option value="inbox">Inbox</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-btns">
+            <button type="submit" id="btn-note-submit">Add Task</button>
+          </div>
+        </form>
+      </div>
+    </div>
   </body>
 </html>
