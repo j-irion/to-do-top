@@ -11,6 +11,9 @@ const app = (() => {
 
   return {
     getProject,
+    get projects() {
+      return projects;
+    },
   };
 })();
 
