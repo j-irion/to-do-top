@@ -3,6 +3,8 @@ import { displayNoteCreator, closeNoteCreator, Note } from "./notes.js";
 import { app } from "./app.js";
 import { sidebar } from "./sidebar.js";
 
+sidebar.render();
+
 let btnAddNote = document.getElementById("btn-add-note");
 btnAddNote.onclick = displayNoteCreator;
 
