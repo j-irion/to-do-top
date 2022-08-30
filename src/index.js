@@ -1,6 +1,8 @@
 import "./style.css";
 import { displayNoteCreator, closeNoteCreator, Note } from "./notes.js";
-import { Project } from "./projects.js";
+import { App } from "./app.js";
+
+let app = App();
 
 let btnAddNote = document.getElementById("btn-add-note");
 btnAddNote.onclick = displayNoteCreator;
@@ -17,8 +19,22 @@ window.onclick = function (event) {
 let noteCreationForm = document.getElementById("note-creation-form");
 noteCreationForm.onsubmit = (e) => {
   e.preventDefault();
+
+  let name = document.getElementById("input-title").value;
+  let priority = document.getElementById("input-priority").value;
+  let dueDate = document.getElementById("input-date").value;
+  let description = document.getElementById("input-description").value;
+  let project = app.getProject(
+    document.getElementById("input-project").selectedIndex
+  );
+
+  let note = Note(name, priority, dueDate, description, false);
+  project.addNote(note);
+
+  //clear form
   document.querySelectorAll("input").forEach((e) => (e.value = ""));
   document.querySelectorAll("select").forEach((e) => (e.selectedIndex = 0));
   document.querySelector("textarea").value = "";
+
   closeNoteCreator();
 };
