@@ -1,6 +1,6 @@
 import { Project } from "./projects.js";
 
-const App = function () {
+const app = (() => {
   let projects = [];
   let inbox = Project("Inbox");
   projects.push(inbox);
@@ -12,6 +12,6 @@ const App = function () {
   return {
     getProject,
   };
-};
+})();
 
-export { App };
+export { app };
