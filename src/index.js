@@ -1,8 +1,7 @@
 import "./style.css";
 import { displayNoteCreator, closeNoteCreator, Note } from "./notes.js";
-import { App } from "./app.js";
-
-let app = App();
+import { app } from "./app.js";
+import { sidebar } from "./sidebar.js";
 
 let btnAddNote = document.getElementById("btn-add-note");
 btnAddNote.onclick = displayNoteCreator;
