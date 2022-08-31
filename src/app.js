@@ -9,8 +9,13 @@ const app = (() => {
     return projects[proj];
   };
 
+  const addProject = (proj) => {
+    projects.push(proj);
+  };
+
   return {
     getProject,
+    addProject,
     get projects() {
       return projects;
     },
