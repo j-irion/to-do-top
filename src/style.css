@@ -152,3 +152,14 @@ select {
 .modal-content button:active {
   transform: scale(0.97);
 }
+
+.project-modal-content {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+#project-title {
+  justify-self: stretch;
+  flex-grow: 1;
+}
