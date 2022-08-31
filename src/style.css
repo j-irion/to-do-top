@@ -113,7 +113,8 @@ textarea {
 #input-title,
 #input-date,
 #input-priority,
-#input-project {
+#input-project,
+#project-title {
   box-sizing: border-box;
   height: 35px;
   border: 1px solid gainsboro;
@@ -157,9 +158,14 @@ select {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
+  align-items: center;
 }
 
 #project-title {
   justify-self: stretch;
   flex-grow: 1;
+}
+
+#modal-btn-add-project {
+  margin-left: auto;
 }
