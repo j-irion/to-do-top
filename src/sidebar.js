@@ -8,6 +8,10 @@ const sidebar = (() => {
       project.textContent = proj.name;
       projectsDiv.appendChild(project);
     });
+    let plus = document.createElement("div");
+    plus.id = "btn-add-project";
+    plus.textContent = "+";
+    projectsDiv.appendChild(plus);
   };
 
   return {
