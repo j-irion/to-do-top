@@ -1,5 +1,6 @@
 import { app } from "./app";
 import { displayProjectCreator } from "./modal";
+import { content } from "./content";
 
 const sidebar = (() => {
   const render = () => {
@@ -9,6 +10,9 @@ const sidebar = (() => {
       let project = document.createElement("li");
       project.textContent = proj.name;
       project.className = "project";
+      project.addEventListener("click", function () {
+        content.renderProject(proj);
+      });
       projectsList.appendChild(project);
     });
     let plus = document.createElement("div");
@@ -26,3 +30,8 @@ const sidebar = (() => {
 })();
 
 export { sidebar };
+
+let inbox = document.getElementById("inbox");
+inbox.addEventListener("click", function () {
+  content.renderProject(app.getProject(0));
+});

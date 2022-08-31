@@ -3,6 +3,7 @@ import { Note } from "./notes.js";
 import { app } from "./app.js";
 import { Project } from "./projects.js";
 import { sidebar } from "./sidebar.js";
+import { content } from "./content";
 
 let btnNoteModalClose = document.getElementById("note-close");
 btnNoteModalClose.onclick = closeNoteCreator;
@@ -40,7 +41,8 @@ noteCreationForm.onsubmit = (e) => {
   document.querySelector("textarea").value = "";
 
   closeNoteCreator();
-  console.log(app.projects);
+  sidebar.render();
+  content.renderProject(content.renderedProject);
 };
 
 let projectAddBtn = document.getElementById("modal-btn-add-project");
@@ -50,8 +52,6 @@ projectAddBtn.onclick = () => {
   title.value = "";
   closeProjectCreator();
   sidebar.render();
-
-  console.log(app.projects);
 };
 
 function displayNoteCreator() {

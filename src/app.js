@@ -5,8 +5,8 @@ const app = (() => {
   let inbox = Project("Inbox");
   projects.push(inbox);
 
-  const getProject = (proj) => {
-    return projects[proj];
+  const getProject = (index) => {
+    return projects[index];
   };
 
   const addProject = (proj) => {
