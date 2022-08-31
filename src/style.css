@@ -27,6 +27,10 @@ header {
   color: rgb(124, 124, 124);
 }
 
+#btn-add-project {
+  width: max-content;
+}
+
 #btn-add-project:hover {
   cursor: pointer;
 }
