@@ -1,9 +1,17 @@
-let btnModalClose = document.getElementsByClassName("close")[0];
-btnModalClose.onclick = closeNoteCreator;
+import "./style.css";
+
+let btnNoteModalClose = document.getElementById("note-close");
+btnNoteModalClose.onclick = closeNoteCreator;
+
+let btnProjectModalClose = document.getElementById("project-close");
+btnProjectModalClose.onclick = closeProjectCreator;
 
 window.onclick = function (event) {
   if (event.target == document.getElementById("notesModal")) {
     closeNoteCreator();
+  }
+  if (event.target == document.getElementById("project-modal")) {
+    closeProjectCreator();
   }
 };
 
@@ -17,4 +25,19 @@ function closeNoteCreator() {
   modal.style.display = "none";
 }
 
-export { displayNoteCreator, closeNoteCreator };
+function displayProjectCreator() {
+  let modal = document.getElementById("project-modal");
+  modal.style.display = "block";
+}
+
+function closeProjectCreator() {
+  let modal = document.getElementById("project-modal");
+  modal.style.display = "none";
+}
+
+export {
+  displayNoteCreator,
+  closeNoteCreator,
+  displayProjectCreator,
+  closeProjectCreator,
+};

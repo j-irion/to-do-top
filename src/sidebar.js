@@ -1,4 +1,5 @@
 import { app } from "./app";
+import { displayProjectCreator } from "./modal";
 
 const sidebar = (() => {
   const render = () => {
@@ -10,7 +11,10 @@ const sidebar = (() => {
     });
     let plus = document.createElement("div");
     plus.id = "btn-add-project";
-    plus.textContent = "+";
+    plus.textContent = "+ Add Project";
+    plus.addEventListener("click", () => {
+      displayProjectCreator();
+    });
     projectsDiv.appendChild(plus);
   };
 
