@@ -11,6 +11,7 @@ module.exports = {
     sidebar: "./src/sidebar.js",
     modal: "./src/modal.js",
     header: "./src/header.js",
+    conent: "./src/content.js",
   },
   devtool: "inline-source-map",
   plugins: [
