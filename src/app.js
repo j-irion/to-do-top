@@ -13,9 +13,16 @@ const app = (() => {
     projects.push(proj);
   };
 
+  const getProjectIndexOfNote = (note) => {
+    for (let i = 1; i < projects.length; ++i) {
+      if (projects[i].notes.some((element) => element === note)) return i;
+    }
+  };
+
   return {
     getProject,
     addProject,
+    getProjectIndexOfNote,
     get projects() {
       return projects;
     },

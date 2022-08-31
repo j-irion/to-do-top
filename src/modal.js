@@ -54,6 +54,18 @@ projectAddBtn.onclick = () => {
   sidebar.render();
 };
 
+function displayNoteEditor(note) {
+  console.log(note.description);
+  document.getElementById("input-title").value = note.title;
+  document.getElementById("input-priority").value = note.priority;
+  document.getElementById("input-date").value = note.dueDate;
+  document.getElementById("input-description").value = note.description;
+  document.getElementById("input-project").selectedIndex =
+    app.getProjectIndexOfNote(note);
+
+  displayNoteCreator();
+}
+
 function displayNoteCreator() {
   let modal = document.getElementById("notesModal");
   modal.style.display = "block";
@@ -79,4 +91,5 @@ export {
   closeNoteCreator,
   displayProjectCreator,
   closeProjectCreator,
+  displayNoteEditor,
 };

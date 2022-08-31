@@ -1,4 +1,5 @@
-import { app } from "./app";
+import { app } from "./app.js";
+import { displayNoteEditor } from "./modal.js";
 
 const content = (() => {
   let renderedProject = app.projects[0];
@@ -12,6 +13,9 @@ const content = (() => {
     project.notes.forEach((note) => {
       let noteDiv = document.createElement("div");
       noteDiv.textContent = note.title;
+      noteDiv.addEventListener("click", () => {
+        displayNoteEditor(note);
+      });
       contentDiv.appendChild(noteDiv);
       let edit = document.createElement("span");
       edit.className = "material-symbols-rounded";
