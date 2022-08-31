@@ -1,13 +1,3 @@
-function displayNoteCreator() {
-  let modal = document.getElementById("notesModal");
-  modal.style.display = "block";
-}
-
-function closeNoteCreator() {
-  let modal = document.getElementById("notesModal");
-  modal.style.display = "none";
-}
-
 const Note = function (title, priority, dueDate, description, completed) {
   let noteTitle = title;
   let notePrio = priority;
@@ -49,4 +39,4 @@ const Note = function (title, priority, dueDate, description, completed) {
   };
 };
 
-export { displayNoteCreator, closeNoteCreator, Note };
+export { Note };

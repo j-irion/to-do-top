@@ -1,21 +1,10 @@
 import "./style.css";
-import { displayNoteCreator, closeNoteCreator, Note } from "./notes.js";
+import { Note } from "./notes.js";
 import { app } from "./app.js";
 import { sidebar } from "./sidebar.js";
+import { closeNoteCreator } from "./modal.js";
 
 sidebar.render();
-
-let btnAddNote = document.getElementById("btn-add-note");
-btnAddNote.onclick = displayNoteCreator;
-
-let btnModalClose = document.getElementsByClassName("close")[0];
-btnModalClose.onclick = closeNoteCreator;
-
-window.onclick = function (event) {
-  if (event.target == document.getElementById("notesModal")) {
-    closeNoteCreator();
-  }
-};
 
 let noteCreationForm = document.getElementById("note-creation-form");
 noteCreationForm.onsubmit = (e) => {
