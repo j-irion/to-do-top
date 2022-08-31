@@ -9,6 +9,7 @@ module.exports = {
     projects: "./src/projects.js",
     app: "./src/app.js",
     sidebar: "./src/sidebar.js",
+    modal: "./src/modal.js",
   },
   devtool: "inline-source-map",
   plugins: [
