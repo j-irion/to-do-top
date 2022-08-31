@@ -4,6 +4,7 @@ import { displayProjectCreator } from "./modal";
 const sidebar = (() => {
   const render = () => {
     const projectsList = document.querySelector(".projects");
+    projectsList.innerHTML = "";
     app.projects.forEach((proj) => {
       let project = document.createElement("li");
       project.textContent = proj.name;
