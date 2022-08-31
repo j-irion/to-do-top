@@ -3,11 +3,12 @@ import { displayProjectCreator } from "./modal";
 
 const sidebar = (() => {
   const render = () => {
-    const projectsDiv = document.querySelector(".projects");
+    const projectsList = document.querySelector(".projects");
     app.projects.forEach((proj) => {
-      let project = document.createElement("span");
+      let project = document.createElement("li");
       project.textContent = proj.name;
-      projectsDiv.appendChild(project);
+      project.className = "project";
+      projectsList.appendChild(project);
     });
     let plus = document.createElement("div");
     plus.id = "btn-add-project";
@@ -15,7 +16,7 @@ const sidebar = (() => {
     plus.addEventListener("click", () => {
       displayProjectCreator();
     });
-    projectsDiv.appendChild(plus);
+    projectsList.appendChild(plus);
   };
 
   return {
