@@ -114,7 +114,7 @@ textarea {
 #input-date,
 #input-priority,
 #input-project,
-#project-title {
+#input-project-title {
   box-sizing: border-box;
   height: 35px;
   border: 1px solid gainsboro;
@@ -161,7 +161,7 @@ select {
   align-items: center;
 }
 
-#project-title {
+#input-project-title {
   justify-self: stretch;
   flex-grow: 1;
 }
