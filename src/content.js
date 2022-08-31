@@ -13,6 +13,10 @@ const content = (() => {
       let noteDiv = document.createElement("div");
       noteDiv.textContent = note.title;
       contentDiv.appendChild(noteDiv);
+      let edit = document.createElement("span");
+      edit.className = "material-symbols-rounded";
+      edit.innerHTML = "edit";
+      noteDiv.appendChild(edit);
     });
   };
 
