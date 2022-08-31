@@ -7,7 +7,7 @@
 
 body {
   display: grid;
-  grid-template-rows: 50px 1fr;
+  grid-template-rows: 70px 1fr;
   grid-template-columns: 300px 1fr;
   min-height: 100vh;  
 }
@@ -15,12 +15,34 @@ body {
 header {
   background-color: #A51822;
   grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  padding: 0 40px;
+  justify-content: end;
+}
+
+#btn-add-note {
+  padding: 7px 15px;
+  border-radius: 10px;
+  border: none;
+  background-color: white;
+  font-size: 16px;
+  font-weight: 700;
 }
 
 .sidebar {
   grid-column: 1 / 2;
   background-color: rgb(240, 240, 240);
   padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sidebar > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .projects {
@@ -168,4 +190,18 @@ select {
 
 #modal-btn-add-project {
   margin-left: auto;
+}
+
+.content h2{
+  padding: 40px 40px 20px 40px;
+}
+
+.content > div {
+  padding: 10px 40px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.content > div:nth-child(2n) {
+  background-color: rgb(240, 240, 240);
 }
