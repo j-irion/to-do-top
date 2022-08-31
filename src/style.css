@@ -28,6 +28,14 @@ header {
   color: rgb(124, 124, 124);
 }
 
+#btn-add-project {
+  margin-left: 10px;
+}
+
+#btn-add-project:hover {
+  cursor: pointer;
+}
+
 .modal {
   display: none; 
   position: fixed; 
