@@ -5,6 +5,10 @@ const Project = function (name) {
     notes.push(note);
   };
 
+  const deleteNote = (inputNote) => {
+    notes = notes.filter((note) => note !== inputNote);
+  };
+
   return {
     get name() {
       return projectName;
@@ -16,6 +20,7 @@ const Project = function (name) {
       return notes;
     },
     addNote,
+    deleteNote,
   };
 };
 

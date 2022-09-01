@@ -25,6 +25,13 @@ const content = (() => {
       edit.className = "material-symbols-rounded";
       edit.innerHTML = "edit";
       noteDiv.appendChild(edit);
+      let deleteButton = document.createElement("button");
+      deleteButton.textContent = "Delete";
+      noteDiv.appendChild(deleteButton);
+      deleteButton.addEventListener("click", () => {
+        project.deleteNote(note);
+        renderProject(project);
+      });
       edit.addEventListener("click", () => {
         note.beingEdited = true;
         displayNoteEditor(note);
