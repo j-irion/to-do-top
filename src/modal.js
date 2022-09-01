@@ -68,10 +68,24 @@ let projectAddBtn = document.getElementById("modal-btn-add-project");
 projectAddBtn.onclick = () => {
   let title = document.getElementById("input-project-title");
   app.addProject(Project(title.value));
+  console.log(app.projects);
   title.value = "";
   closeProjectCreator();
   sidebar.render();
+  addProjectsToCreator();
 };
+
+function addProjectsToCreator() {
+  let inputProject = document.getElementById("input-project");
+  inputProject.innerHTML = "";
+  console.log(app.getProject(1));
+  app.projects.forEach((project) => {
+    let projectOption = document.createElement("option");
+    projectOption.value = project.name;
+    projectOption.innerHTML = project.name;
+    inputProject.appendChild(projectOption);
+  });
+}
 
 function displayNoteEditor(note) {
   document.getElementById("input-title").value = note.title;
