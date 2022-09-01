@@ -106,9 +106,6 @@ function displayNoteEditor(note) {
 
 function displayNoteCreator() {
   let modal = document.getElementById("notesModal");
-  document.getElementById("input-date").value = new Date()
-    .toISOString()
-    .substring(0, 10);
   modal.style.display = "block";
 }
 
