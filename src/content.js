@@ -16,7 +16,10 @@ const content = (() => {
       noteDiv.textContent = note.title;
       contentDiv.appendChild(noteDiv);
       noteDiv.addEventListener("click", () => {
-        renderNote(note, noteDiv);
+        let noteDivOpen = noteDiv.querySelector(".note-div-open");
+        if (noteDivOpen !== null)
+          noteDivOpen.parentNode.removeChild(noteDivOpen);
+        else renderNote(note, noteDiv);
       });
       let edit = document.createElement("span");
       edit.className = "material-symbols-rounded";
