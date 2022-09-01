@@ -4,6 +4,7 @@ const Note = function (title, priority, dueDate, description, completed) {
   let noteDueDate = dueDate;
   let noteDesc = description;
   let noteCompleted = completed;
+  let beingEdited = false;
 
   return {
     get title() {
@@ -35,6 +36,12 @@ const Note = function (title, priority, dueDate, description, completed) {
     },
     set completed(completed) {
       noteCompleted = completed;
+    },
+    get beingEdited() {
+      return beingEdited;
+    },
+    set beingEdited(inEdit) {
+      beingEdited = inEdit;
     },
   };
 };

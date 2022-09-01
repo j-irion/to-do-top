@@ -22,6 +22,12 @@ window.onclick = function (event) {
 
 let noteCreationForm = document.getElementById("note-creation-form");
 noteCreationForm.onsubmit = (e) => {
+  if (document.getElementById("modal-heading").textContent === "New Note")
+    submitNewNote(e);
+  else submitEditNote(e);
+};
+
+function submitNewNote(e) {
   e.preventDefault();
 
   let name = document.getElementById("input-title").value;
@@ -38,7 +44,25 @@ noteCreationForm.onsubmit = (e) => {
   closeNoteCreator();
   sidebar.render();
   content.renderProject(content.renderedProject);
-};
+}
+
+function submitEditNote(e) {
+  e.preventDefault();
+
+  let note = app.getNoteBeingEdited();
+
+  note.title = document.getElementById("input-title").value;
+  note.priority = document.getElementById("input-priority").value;
+  note.dueDate = document.getElementById("input-date").value;
+  note.description = document.getElementById("input-description").value;
+  note.project = app.getProject(
+    document.getElementById("input-project").selectedIndex
+  );
+  note.beingEdited = false;
+  closeNoteCreator();
+  sidebar.render();
+  content.renderProject(content.renderedProject);
+}
 
 let projectAddBtn = document.getElementById("modal-btn-add-project");
 projectAddBtn.onclick = () => {
@@ -50,7 +74,6 @@ projectAddBtn.onclick = () => {
 };
 
 function displayNoteEditor(note) {
-  console.log(note.description);
   document.getElementById("input-title").value = note.title;
   document.getElementById("input-priority").value = note.priority;
   document.getElementById("input-date").value = note.dueDate;
@@ -58,6 +81,9 @@ function displayNoteEditor(note) {
   document.getElementById("input-project").selectedIndex =
     app.getProjectIndexOfNote(note);
   document.getElementById("modal-heading").textContent = "Edit Note";
+
+  document.getElementById("btn-note-submit").style.display = "none";
+  document.getElementById("btn-note-edit").style.display = "block";
 
   displayNoteCreator();
 }
@@ -70,6 +96,9 @@ function displayNoteCreator() {
 function closeNoteCreator() {
   let modal = document.getElementById("notesModal");
   modal.style.display = "none";
+
+  document.getElementById("btn-note-submit").style.display = "block";
+  document.getElementById("btn-note-edit").style.display = "none";
 
   //clear form
   document.getElementById("modal-heading").textContent = "New Note";

@@ -14,6 +14,7 @@ const content = (() => {
       let noteDiv = document.createElement("div");
       noteDiv.textContent = note.title;
       noteDiv.addEventListener("click", () => {
+        note.beingEdited = true;
         displayNoteEditor(note);
       });
       contentDiv.appendChild(noteDiv);
