@@ -55,7 +55,7 @@ const content = (() => {
     let dateHeading = document.createElement("h4");
     dateHeading.textContent = "Date:";
     let date = document.createElement("span");
-    date.textContent = note.dueDate;
+    date.textContent = note.dueDate.toISOString().substring(0, 10);
     dateElement.appendChild(dateHeading);
     dateElement.appendChild(date);
     let descHeading = document.createElement("h4");
