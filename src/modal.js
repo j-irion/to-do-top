@@ -35,11 +35,6 @@ noteCreationForm.onsubmit = (e) => {
   let note = Note(name, priority, dueDate, description, false);
   project.addNote(note);
 
-  //clear form
-  document.querySelectorAll("input").forEach((e) => (e.value = ""));
-  document.querySelectorAll("select").forEach((e) => (e.selectedIndex = 0));
-  document.querySelector("textarea").value = "";
-
   closeNoteCreator();
   sidebar.render();
   content.renderProject(content.renderedProject);
@@ -62,6 +57,7 @@ function displayNoteEditor(note) {
   document.getElementById("input-description").value = note.description;
   document.getElementById("input-project").selectedIndex =
     app.getProjectIndexOfNote(note);
+  document.getElementById("modal-heading").textContent = "Edit Note";
 
   displayNoteCreator();
 }
@@ -74,6 +70,12 @@ function displayNoteCreator() {
 function closeNoteCreator() {
   let modal = document.getElementById("notesModal");
   modal.style.display = "none";
+
+  //clear form
+  document.getElementById("modal-heading").textContent = "New Note";
+  document.querySelectorAll("input").forEach((e) => (e.value = ""));
+  document.querySelectorAll("select").forEach((e) => (e.selectedIndex = 0));
+  document.querySelector("textarea").value = "";
 }
 
 function displayProjectCreator() {
