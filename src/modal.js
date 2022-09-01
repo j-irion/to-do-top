@@ -137,4 +137,5 @@ export {
   displayProjectCreator,
   closeProjectCreator,
   displayNoteEditor,
+  addProjectsToCreator,
 };
