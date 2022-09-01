@@ -192,6 +192,20 @@ select {
   margin-left: auto;
 }
 
+.form-btns {
+  position: relative;
+  height: 45px;
+}
+
+#btn-note-submit {
+  display: block;
+}
+
+#btn-note-edit {
+  position: absolute;
+  display: none;
+}
+
 .content h2{
   padding: 40px 40px 20px 40px;
 }
