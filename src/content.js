@@ -13,15 +13,15 @@ const content = (() => {
     project.notes.forEach((note) => {
       let noteDiv = document.createElement("div");
       noteDiv.textContent = note.title;
-      noteDiv.addEventListener("click", () => {
-        note.beingEdited = true;
-        displayNoteEditor(note);
-      });
       contentDiv.appendChild(noteDiv);
       let edit = document.createElement("span");
       edit.className = "material-symbols-rounded";
       edit.innerHTML = "edit";
       noteDiv.appendChild(edit);
+      edit.addEventListener("click", () => {
+        note.beingEdited = true;
+        displayNoteEditor(note);
+      });
     });
   };
 
