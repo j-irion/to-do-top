@@ -1,5 +1,6 @@
 import { app } from "./app.js";
 import { displayNoteEditor } from "./modal.js";
+import { Project } from "./projects.js";
 
 const content = (() => {
   let renderedProject = app.projects[0];
@@ -72,8 +73,32 @@ const content = (() => {
     noteDiv.appendChild(noteDivOpen);
   };
 
+  const renderToday = () => {
+    let todaysNotes = [];
+    console.log(app.projects);
+    app.projects.forEach((proj) =>
+      proj.notes.forEach((note) => {
+        if (isToday(note.dueDate)) todaysNotes.push(note);
+      })
+    );
+    let project = Project("Today");
+    console.log(project);
+    todaysNotes.forEach((note) => project.addNote(note));
+    renderProject(project);
+  };
+
+  const isToday = (someDate) => {
+    const today = new Date();
+    return (
+      someDate.getDate() == today.getDate() &&
+      someDate.getMonth() == today.getMonth() &&
+      someDate.getFullYear() == today.getFullYear()
+    );
+  };
+
   return {
     renderProject,
+    renderToday,
     get renderedProject() {
       return renderedProject;
     },

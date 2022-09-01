@@ -32,7 +32,7 @@ function submitNewNote(e) {
 
   let name = document.getElementById("input-title").value;
   let priority = document.getElementById("input-priority").value;
-  let dueDate = document.getElementById("input-date").value;
+  let dueDate = new Date(document.getElementById("input-date").value);
   let description = document.getElementById("input-description").value;
   let project = app.getProject(
     document.getElementById("input-project").selectedIndex
@@ -53,7 +53,7 @@ function submitEditNote(e) {
 
   note.title = document.getElementById("input-title").value;
   note.priority = document.getElementById("input-priority").value;
-  note.dueDate = document.getElementById("input-date").value;
+  note.dueDate = new Date(document.getElementById("input-date").value);
   note.description = document.getElementById("input-description").value;
   note.project = app.getProject(
     document.getElementById("input-project").selectedIndex
@@ -90,7 +90,9 @@ function addProjectsToCreator() {
 function displayNoteEditor(note) {
   document.getElementById("input-title").value = note.title;
   document.getElementById("input-priority").value = note.priority;
-  document.getElementById("input-date").value = note.dueDate;
+  document.getElementById("input-date").value = note.dueDate
+    .toISOString()
+    .substring(0, 10);
   document.getElementById("input-description").value = note.description;
   document.getElementById("input-project").selectedIndex =
     app.getProjectIndexOfNote(note);

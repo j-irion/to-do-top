@@ -35,3 +35,8 @@ let inbox = document.getElementById("inbox");
 inbox.addEventListener("click", function () {
   content.renderProject(app.getProject(0));
 });
+
+let today = document.getElementById("today");
+today.addEventListener("click", () => {
+  content.renderToday();
+});
