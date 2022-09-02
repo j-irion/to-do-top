@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0"
+    />
+    <title>To-Do</title>
+  <script defer src="index.bundle.js"></script></head>
+  <body>
+    <header><button id="btn-add-note">Add Note</button></header>
+    <div class="sidebar">
+      <div id="inbox">
+        <span class="material-symbols-rounded"> inbox </span>Inbox
+      </div>
+      <div id="today">
+        <span class="material-symbols-rounded"> today </span>Today
+      </div>
+      <div>
+        <span class="material-symbols-rounded"> home_storage </span>Projects
+      </div>
+      <ul class="projects"></ul>
+    </div>
+    <div class="content"></div>
+
+    <div id="notesModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 id="modal-heading">New Note</h2>
+          <span class="close" id="note-close">&times;</span>
+        </div>
+        <hr />
+        <form action="#" id="note-creation-form">
+          <div class="form-column">
+            <div class="form-element">
+              <h3>Title:</h3>
+              <input type="text" name="input-title" id="input-title" />
+            </div>
+            <div class="form-element">
+              <h3>Description:</h3>
+              <textarea
+                name="input-description"
+                id="input-description"
+                rows="8"
+              ></textarea>
+            </div>
+          </div>
+          <div class="form-column">
+            <div class="form-element">
+              <h3>Due Date:</h3>
+              <input type="date" name="input-date" id="input-date" />
+            </div>
+            <div class="form-element">
+              <h3>Priority</h3>
+              <select name="input-priority" id="input-priority">
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+              </select>
+            </div>
+            <div class="form-element">
+              <h3>Project:</h3>
+              <select name="input-project" id="input-project"></select>
+            </div>
+          </div>
+          <div class="form-btns">
+            <button type="submit" id="btn-note-submit">Add Note</button>
+            <button type="submit" id="btn-note-edit">Edit Note</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div id="project-modal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>New Project</h2>
+          <span class="close" id="project-close">&times;</span>
+        </div>
+        <hr />
+        <div class="project-modal-content">
+          <h3>Title:</h3>
+          <input
+            type="text"
+            name="input-project-title"
+            id="input-project-title"
+          />
+          <button id="modal-btn-add-project">Add Project</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
