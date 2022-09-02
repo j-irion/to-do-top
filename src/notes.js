@@ -1,12 +1,28 @@
-const Note = function (title, priority, dueDate, description, completed) {
+const Note = function (
+  title,
+  priority,
+  dueDate,
+  description,
+  completed,
+  project
+) {
   let noteTitle = title;
   let notePrio = priority;
   let noteDueDate = dueDate;
   let noteDesc = description;
   let noteCompleted = completed;
   let beingEdited = false;
+  let noteProject = project;
+
+  const equals = (inputNote) => {
+    if (noteTitle === inputNote.title) {
+      return true;
+    }
+    return false;
+  };
 
   return {
+    equals,
     get title() {
       return noteTitle;
     },
@@ -42,6 +58,12 @@ const Note = function (title, priority, dueDate, description, completed) {
     },
     set beingEdited(inEdit) {
       beingEdited = inEdit;
+    },
+    get project() {
+      return noteProject;
+    },
+    set project(project) {
+      noteProject = project;
     },
   };
 };

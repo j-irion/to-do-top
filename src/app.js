@@ -1,4 +1,5 @@
 import { Project } from "./projects.js";
+let jc = require("json-cycle");
 
 const app = (() => {
   let projects = [];
@@ -22,11 +23,30 @@ const app = (() => {
   const getNoteBeingEdited = () => {
     for (let i = 0; i < projects.length; ++i) {
       let proj = projects[i];
-      console.log(proj);
       let note = proj.notes.find((note) => note.beingEdited === true);
       if (note !== undefined) {
         return note;
       }
+    }
+  };
+
+  const saveToLocalStorage = () => {
+    let projNames = projects.map((project) => project.name);
+    localStorage.setItem("projNames", jc.stringify(projNames));
+    for (let i = 0; i < projects.length; ++i) {
+      let saveNotes = projects[i].notes;
+      localStorage.setItem(`notes${i}`, jc.stringify(saveNotes));
+    }
+  };
+
+  const loadFromLocalStorage = () => {
+    let projNames = jc.parse(localStorage.getItem("projNames"));
+    if (projNames === null) return;
+    projects = [];
+    for (let i = 0; i < projNames.length; ++i) {
+      let createdProj = Project(projNames[i]);
+      createdProj.notes = jc.parse(localStorage.getItem(`notes${i}`));
+      projects.push(createdProj);
     }
   };
 
@@ -35,6 +55,8 @@ const app = (() => {
     addProject,
     getProjectIndexOfNote,
     getNoteBeingEdited,
+    saveToLocalStorage,
+    loadFromLocalStorage,
     get projects() {
       return projects;
     },

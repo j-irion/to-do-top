@@ -30,6 +30,7 @@ const content = (() => {
       noteDiv.appendChild(deleteButton);
       deleteButton.addEventListener("click", () => {
         project.deleteNote(note);
+        app.saveToLocalStorage();
         renderProject(project);
       });
       edit.addEventListener("click", () => {
@@ -65,7 +66,7 @@ const content = (() => {
     let dateHeading = document.createElement("h4");
     dateHeading.textContent = "Date:";
     let date = document.createElement("span");
-    date.textContent = note.dueDate.toISOString().substring(0, 10);
+    date.textContent = note.dueDate;
     dateElement.appendChild(dateHeading);
     dateElement.appendChild(date);
     let descHeading = document.createElement("h4");
@@ -85,14 +86,12 @@ const content = (() => {
 
   const renderToday = () => {
     let todaysNotes = [];
-    console.log(app.projects);
     app.projects.forEach((proj) =>
       proj.notes.forEach((note) => {
-        if (isToday(note.dueDate)) todaysNotes.push(note);
+        if (isToday(new Date(note.dueDate))) todaysNotes.push(note);
       })
     );
     let project = Project("Today");
-    console.log(project);
     todaysNotes.forEach((note) => project.addNote(note));
     renderProject(project);
   };

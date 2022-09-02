@@ -32,15 +32,23 @@ function submitNewNote(e) {
 
   let name = document.getElementById("input-title").value;
   let priority = document.getElementById("input-priority").value;
-  let dueDate = new Date(document.getElementById("input-date").value);
+  let dueDate = document.getElementById("input-date").value;
   let description = document.getElementById("input-description").value;
   let project = app.getProject(
     document.getElementById("input-project").selectedIndex
   );
 
-  let note = Note(name, priority, dueDate, description, false);
+  let note = Note(
+    name,
+    priority,
+    dueDate,
+    description,
+    false,
+    document.getElementById("input-project").selectedIndex
+  );
   project.addNote(note);
 
+  app.saveToLocalStorage();
   closeNoteCreator();
   sidebar.render();
   content.renderProject(content.renderedProject);
@@ -51,14 +59,19 @@ function submitEditNote(e) {
 
   let note = app.getNoteBeingEdited();
 
+  app.getProject(note.project).deleteNote(note);
+
   note.title = document.getElementById("input-title").value;
   note.priority = document.getElementById("input-priority").value;
-  note.dueDate = new Date(document.getElementById("input-date").value);
+  note.dueDate = document.getElementById("input-date").value;
   note.description = document.getElementById("input-description").value;
-  note.project = app.getProject(
-    document.getElementById("input-project").selectedIndex
-  );
+  note.project = document.getElementById("input-project").selectedIndex;
+
+  app
+    .getProject(document.getElementById("input-project").selectedIndex)
+    .addNote(note);
   note.beingEdited = false;
+  app.saveToLocalStorage();
   closeNoteCreator();
   sidebar.render();
   content.renderProject(content.renderedProject);
@@ -68,8 +81,8 @@ let projectAddBtn = document.getElementById("modal-btn-add-project");
 projectAddBtn.onclick = () => {
   let title = document.getElementById("input-project-title");
   app.addProject(Project(title.value));
-  console.log(app.projects);
   title.value = "";
+  app.saveToLocalStorage();
   closeProjectCreator();
   sidebar.render();
   addProjectsToCreator();
@@ -78,7 +91,6 @@ projectAddBtn.onclick = () => {
 function addProjectsToCreator() {
   let inputProject = document.getElementById("input-project");
   inputProject.innerHTML = "";
-  console.log(app.getProject(1));
   app.projects.forEach((project) => {
     let projectOption = document.createElement("option");
     projectOption.value = project.name;
@@ -90,9 +102,7 @@ function addProjectsToCreator() {
 function displayNoteEditor(note) {
   document.getElementById("input-title").value = note.title;
   document.getElementById("input-priority").value = note.priority;
-  document.getElementById("input-date").value = note.dueDate
-    .toISOString()
-    .substring(0, 10);
+  document.getElementById("input-date").value = note.dueDate;
   document.getElementById("input-description").value = note.description;
   document.getElementById("input-project").selectedIndex =
     app.getProjectIndexOfNote(note);

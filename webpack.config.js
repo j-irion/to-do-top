@@ -5,13 +5,6 @@ module.exports = {
   mode: "development",
   entry: {
     index: "./src/index.js",
-    notes: "./src/notes.js",
-    projects: "./src/projects.js",
-    app: "./src/app.js",
-    sidebar: "./src/sidebar.js",
-    modal: "./src/modal.js",
-    header: "./src/header.js",
-    content: "./src/content.js",
   },
   devtool: "inline-source-map",
   plugins: [
@@ -19,9 +12,13 @@ module.exports = {
       template: "./src/index.html",
     }),
   ],
+  resolve: {
+    extensions: [".js"],
+  },
   output: {
     filename: "[name].bundle.js",
     path: path.resolve(__dirname, "dist"),
+    clean: true,
   },
   module: {
     rules: [

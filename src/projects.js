@@ -19,6 +19,9 @@ const Project = function (name) {
     get notes() {
       return notes;
     },
+    set notes(inputNotes) {
+      notes = inputNotes;
+    },
     addNote,
     deleteNote,
   };
